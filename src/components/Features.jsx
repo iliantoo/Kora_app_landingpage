@@ -1,16 +1,20 @@
 /* Feature pill icons as inline SVGs */
 const MatchingIcon = () => (
-  <svg viewBox="0 0 40 40" className="h-10 w-10" fill="none">
-    <circle cx="20" cy="12" r="6" stroke="currentColor" strokeWidth="2" />
-    <path d="M10 34c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="currentColor" strokeWidth="2" />
-    <path d="M24 30l4-4m0 0l-2 8 8-2-4-4z" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
+  <img
+    src="/images/wave.png"
+    alt="Matching icon"
+    className="h-10 w-10 object-contain"
+    loading="lazy"
+  />
 );
 
 const PersonnalisationIcon = () => (
-  <svg viewBox="0 0 40 40" className="h-10 w-10" fill="currentColor">
-    <path d="M20 4l4.9 9.9 10.9 1.6-7.9 7.7 1.9 10.8L20 29l-9.8 5.1 1.9-10.8-7.9-7.7 10.9-1.6z" />
-  </svg>
+  <img
+    src="/images/etoile.png"
+    alt="Personnalisation icon"
+    className="h-10 w-10 object-contain"
+    loading="lazy"
+  />
 );
 
 const FavorisIcon = () => (
@@ -19,76 +23,88 @@ const FavorisIcon = () => (
   </svg>
 );
 
-const CatIcon = () => (
-  <svg viewBox="0 0 40 40" className="h-10 w-10" fill="currentColor">
-    {/* Cat face */}
-    <path d="M8 14l4-10 6 6h4l6-6 4 10v8c0 6-5 12-12 12S8 28 8 22z" />
-    <circle cx="16" cy="20" r="2" fill="white" />
-    <circle cx="24" cy="20" r="2" fill="white" />
-    <ellipse cx="20" cy="24" rx="2" ry="1.5" fill="white" />
-  </svg>
-);
 
 const DossierIcon = () => (
-  <svg viewBox="0 0 40 40" className="h-10 w-10" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="6" y="10" width="28" height="22" rx="3" />
-    <path d="M6 16h28" />
-    <path d="M14 10V7a3 3 0 013-3h6a3 3 0 013 3v3" />
-    <circle cx="20" cy="24" r="4" />
-    <path d="M20 22v4m-2-2h4" />
-  </svg>
+  <img
+    src="/images/box.png"
+    alt="Dossiers d'adoption icon"
+    className="h-10 w-10 object-contain"
+    loading="lazy"
+  />
+);
+
+const ChatIcon = () => (
+  <img
+    src="/images/chat.png"
+    alt="Chat icon"
+    className="h-10 w-10 object-contain"
+    loading="lazy"
+  />
 );
 
 const features = [
   {
     title: "Matching",
     text: "Humain-animal",
-    icon: <MatchingIcon />,
+    icon: <MatchingIcon />, 
     position: "top-left",
+    variant: "light",
+  },
+  {
+    title: "Favoris",
+    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
+    icon: <FavorisIcon />, 
+    position: "mid-left",
+    variant: "orange",
+  },
+  {
+    title: "Dossiers d'adoption",
+    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
+    icon: <DossierIcon />, 
+    position: "bot-left",
     variant: "light",
   },
   {
     title: "Personnalisation",
     text: "Recherche par filtres personnalisés pour avoir l'animal qui vous correspond le mieux !",
-    icon: <PersonnalisationIcon />,
+    icon: <PersonnalisationIcon />, 
     position: "top-right",
     variant: "orange",
   },
   {
-    title: "Favoris",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <FavorisIcon />,
-    position: "mid-left",
-    variant: "orange",
-  },
-  {
     title: "Titre",
     text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <CatIcon />,
+    icon: <ChatIcon />, 
     position: "mid-right",
     variant: "light",
   },
   {
-    title: "Dossiers d'adoption",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <DossierIcon />,
-    position: "bot-left",
-    variant: "light",
-  },
-  {
     title: "Titre",
     text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <CatIcon />,
+    icon: <ChatIcon />, 
     position: "bot-right",
     variant: "orange",
   },
 ];
 
-function FeatureCard({ title, text, icon, variant }) {
+function FeatureCard({ title, text, icon, variant, position }) {
   const isOrange = variant === "orange";
+  
+  // Ajustements de position/espacement selon la position de la carte
+  let marginClass = "";
+  if (position === "top-left" || position === "top-right") {
+    marginClass = "-mb-3"; // Monter les cartes du haut
+  } else if (position === "mid-left") {
+    marginClass = "mt-4"; // Écarter vers bas (loin du téléphone)
+  } else if (position === "mid-right") {
+    marginClass = "-mt-4"; // Remonter vers haut (loin du téléphone)
+  } else if (position === "bot-left" || position === "bot-right") {
+    marginClass = "mt-3"; // Descendre les cartes du bas de manière cohérente
+  }
+  
   return (
     <div
-      className={`flex items-start gap-4 rounded-2xl px-5 py-4 shadow-sm ${
+      className={`flex items-center gap-4 h-24 w-full lg:w-[300px] rounded-full px-5 shadow-sm ${marginClass} ${
         isOrange
           ? "bg-orange text-white"
           : "bg-salmon-light text-brown"
