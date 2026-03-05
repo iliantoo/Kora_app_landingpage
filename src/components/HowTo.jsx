@@ -81,11 +81,7 @@ function StepCard({ title, text, variant, isFirst, isLast }) {
 
       {/* Card */}
       <div
-        className={`mb-2 flex-1 rounded-xl px-4 py-3 ${
-          isOrange
-            ? "bg-orange text-white"
-            : "bg-transparent text-brown"
-        }`}
+        className="mb-2 flex-1 rounded-xl px-4 py-3 transition-all duration-300 ease-in-out cursor-pointer bg-transparent text-brown hover:bg-orange hover:text-white"
       >
         <h3 className="text-base font-extrabold leading-tight">{title}</h3>
         {text.split("\n\n").map((p, i) => (
