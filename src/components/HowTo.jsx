@@ -21,17 +21,8 @@ const steps = [
   },
 ];
 
-function TimelineDot({ isFirst }) {
-  if (isFirst) {
-    // First dot: small filled orange circle
-    return (
-      <div
-        className="shrink-0 rounded-full bg-orange"
-        style={{ width: "16px", height: "16px" }}
-      />
-    );
-  }
-  // Other dots: donut ring — salmon outer ring with beige center and small salmon inner dot
+function TimelineDot() {
+  // Use one marker style for every step to keep the timeline visually consistent.
   return (
     <div
       className="shrink-0 rounded-full bg-salmon flex items-center justify-center"
@@ -66,7 +57,7 @@ function StepCard({ title, text, variant, isFirst, isLast }) {
             }}
           />
         )}
-        <TimelineDot isFirst={isFirst} />
+        <TimelineDot />
         {/* Bottom segment of line (after dot) */}
         {!isLast && (
           <div

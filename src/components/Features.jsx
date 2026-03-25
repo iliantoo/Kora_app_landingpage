@@ -89,22 +89,18 @@ const features = [
 
 function FeatureCard({ title, text, icon, variant, position }) {
   const isOrange = variant === "orange";
-  
-  // Ajustements de position/espacement selon la position de la carte
-  let marginClass = "";
-  if (position === "top-left" || position === "top-right") {
-    marginClass = "-mb-3"; // Monter les cartes du haut
-  } else if (position === "mid-left") {
-    marginClass = "mt-4"; // Écarter vers bas (loin du téléphone)
-  } else if (position === "mid-right") {
-    marginClass = "-mt-4"; // Remonter vers haut (loin du téléphone)
-  } else if (position === "bot-left" || position === "bot-right") {
-    marginClass = "mt-3"; // Descendre les cartes du bas de manière cohérente
+
+  let desktopCurveClass = "";
+  if (position === "top-left" || position === "bot-left") {
+    desktopCurveClass = "lg:translate-x-10";
+  }
+  if (position === "top-right" || position === "bot-right") {
+    desktopCurveClass = "lg:-translate-x-10";
   }
   
   return (
     <div
-      className={`flex items-center gap-4 h-24 w-full lg:w-[300px] rounded-full px-5 shadow-sm ${marginClass} ${
+      className={`flex items-center gap-4 min-h-24 w-full rounded-full px-5 py-3 transition-transform ${desktopCurveClass} ${
         isOrange
           ? "bg-orange text-white"
           : "bg-salmon-light text-brown"
@@ -126,6 +122,14 @@ function FeatureCard({ title, text, icon, variant, position }) {
 }
 
 export default function Features() {
+  const leftFeatures = features.filter((f) =>
+    ["top-left", "mid-left", "bot-left"].includes(f.position)
+  );
+
+  const rightFeatures = features.filter((f) =>
+    ["top-right", "mid-right", "bot-right"].includes(f.position)
+  );
+
   return (
     <section id="fonctionnalites" className="bg-beige py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -134,20 +138,14 @@ export default function Features() {
           À quoi sert l'app ?
         </h2>
 
-        {/* Layout: left cards | phone | right cards */}
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-8">
-          {/* Left column */}
-          <div className="flex w-full flex-col gap-6 lg:w-[300px]">
-            {features
-              .filter((f) =>
-                ["top-left", "mid-left", "bot-left"].includes(f.position)
-              )
-              .map((f) => (
-                <FeatureCard key={f.title + f.position} {...f} />
-              ))}
+        {/* Mobile and tablet */}
+        <div className="flex flex-col items-center gap-10 lg:hidden">
+          <div className="flex w-full flex-col gap-6">
+            {leftFeatures.map((f) => (
+              <FeatureCard key={f.title + f.position} {...f} />
+            ))}
           </div>
 
-          {/* Center phone */}
           <div className="relative mx-4 w-[260px] shrink-0 md:w-[300px]">
             <div className="rounded-[3rem] bg-black p-2 shadow-2xl">
               <div className="overflow-hidden rounded-[2.5rem] bg-cream">
@@ -161,15 +159,46 @@ export default function Features() {
             </div>
           </div>
 
-          {/* Right column */}
-          <div className="flex w-full flex-col gap-6 lg:w-[300px]">
-            {features
-              .filter((f) =>
-                ["top-right", "mid-right", "bot-right"].includes(f.position)
-              )
-              .map((f) => (
-                <FeatureCard key={f.title + f.position} {...f} />
-              ))}
+          <div className="flex w-full flex-col gap-6">
+            {rightFeatures.map((f) => (
+              <FeatureCard key={f.title + f.position} {...f} />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: curved composition around phone */}
+        <div className="relative mx-auto hidden h-[680px] w-full max-w-[1240px] lg:block">
+          <div className="absolute left-1/2 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2">
+            <div className="rounded-[3rem] bg-black p-2 shadow-2xl">
+              <div className="overflow-hidden rounded-[2.5rem] bg-cream">
+                <img
+                  src="/images/features-phone.png"
+                  alt="Patoo app - écran Sully"
+                  className="h-auto w-full"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute left-0 top-[16%] w-[360px]">
+            <FeatureCard {...leftFeatures[0]} />
+          </div>
+          <div className="absolute left-0 top-[41%] w-[360px]">
+            <FeatureCard {...leftFeatures[1]} />
+          </div>
+          <div className="absolute left-0 top-[66%] w-[360px]">
+            <FeatureCard {...leftFeatures[2]} />
+          </div>
+
+          <div className="absolute right-0 top-[16%] w-[360px]">
+            <FeatureCard {...rightFeatures[0]} />
+          </div>
+          <div className="absolute right-0 top-[41%] w-[360px]">
+            <FeatureCard {...rightFeatures[1]} />
+          </div>
+          <div className="absolute right-0 top-[66%] w-[360px]">
+            <FeatureCard {...rightFeatures[2]} />
           </div>
         </div>
       </div>
