@@ -6,16 +6,14 @@ export default function Hero() {
         <div className="relative flex w-full justify-center md:w-1/2">
           <div className="relative w-[280px] md:w-[320px]">
             {/* Phone frame with shadow and tilt */}
-            <div className="-rotate-6 rounded-[3rem] bg-black p-2 shadow-2xl">
-              <div className="overflow-hidden rounded-[2.5rem] bg-cream">
-                {/* Placeholder for login screen mockup */}
-                <img
-                  src="/images/hero-phone.png"
-                  alt="Patoo app écran de connexion"
-                  className="h-auto w-full"
-                  loading="lazy"
-                />
-              </div>
+            <div className="-rotate-6 overflow-hidden rounded-[2.5rem]">
+              {/* Placeholder for login screen mockup */}
+              <img
+                src="/images/hero-phone.png"
+                alt="Patoo app écran de connexion"
+                className="h-auto w-full"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

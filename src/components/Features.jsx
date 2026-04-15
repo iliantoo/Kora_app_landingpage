@@ -147,15 +147,13 @@ export default function Features() {
           </div>
 
           <div className="relative mx-4 w-[260px] shrink-0 md:w-[300px]">
-            <div className="rounded-[3rem] bg-black p-2 shadow-2xl">
-              <div className="overflow-hidden rounded-[2.5rem] bg-cream">
-                <img
-                  src="/images/features-phone.png"
-                  alt="Patoo app - écran Sully"
-                  className="h-auto w-full"
-                  loading="lazy"
-                />
-              </div>
+            <div className="overflow-hidden rounded-[2.5rem]">
+              <img
+                src="/images/features-phone.png"
+                alt="Patoo app - écran Sully"
+                className="h-auto w-full"
+                loading="lazy"
+              />
             </div>
           </div>
 
@@ -169,15 +167,13 @@ export default function Features() {
         {/* Desktop: curved composition around phone */}
         <div className="relative mx-auto hidden h-[680px] w-full max-w-[1240px] lg:block">
           <div className="absolute left-1/2 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2">
-            <div className="rounded-[3rem] bg-black p-2 shadow-2xl">
-              <div className="overflow-hidden rounded-[2.5rem] bg-cream">
-                <img
-                  src="/images/features-phone.png"
-                  alt="Patoo app - écran Sully"
-                  className="h-auto w-full"
-                  loading="lazy"
-                />
-              </div>
+            <div className="overflow-hidden rounded-[2.5rem]">
+              <img
+                src="/images/features-phone.png"
+                alt="Patoo app - écran Sully"
+                className="h-auto w-full"
+                loading="lazy"
+              />
             </div>
           </div>
 
