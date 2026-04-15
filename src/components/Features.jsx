@@ -52,17 +52,10 @@ const features = [
   },
   {
     title: "Favoris",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
+    text: "Mettez de côté les animaux qui vous plaisent.",
     icon: <FavorisIcon />, 
-    position: "mid-left",
-    variant: "orange",
-  },
-  {
-    title: "Dossiers d'adoption",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <DossierIcon />, 
     position: "bot-left",
-    variant: "light",
+    variant: "orange",
   },
   {
     title: "Personnalisation",
@@ -72,44 +65,27 @@ const features = [
     variant: "orange",
   },
   {
-    title: "Titre",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <ChatIcon />, 
-    position: "mid-right",
-    variant: "light",
-  },
-  {
-    title: "Titre",
-    text: "Explication fonctionnalité dnjzzjdnjzndjznjdnzaj",
-    icon: <ChatIcon />, 
+    title: "Dossiers d'adoption",
+    text: "Vos informations sont envoyées en temps réel aux associations.",
+    icon: <DossierIcon />, 
     position: "bot-right",
-    variant: "orange",
+    variant: "light",
   },
 ];
 
-function FeatureCard({ title, text, icon, variant, position }) {
+function FeatureCard({ title, text, icon, variant }) {
   const isOrange = variant === "orange";
-
-  let desktopCurveClass = "";
-  if (position === "top-left" || position === "bot-left") {
-    desktopCurveClass = "lg:translate-x-10";
-  }
-  if (position === "top-right" || position === "bot-right") {
-    desktopCurveClass = "lg:-translate-x-10";
-  }
   
   return (
     <div
-      className={`flex items-center gap-4 min-h-24 w-full rounded-full px-5 py-3 transition-transform ${desktopCurveClass} ${
+      className={`flex items-center gap-4 min-h-24 w-full rounded-full px-5 py-3 transition-transform ${
         isOrange
           ? "bg-orange text-white"
           : "bg-salmon-light text-brown"
       }`}
     >
       <div
-        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${
-          isOrange ? "bg-white/20 text-white" : "bg-white text-orange"
-        }`}
+        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-orange`}
       >
         {icon}
       </div>
@@ -123,11 +99,11 @@ function FeatureCard({ title, text, icon, variant, position }) {
 
 export default function Features() {
   const leftFeatures = features.filter((f) =>
-    ["top-left", "mid-left", "bot-left"].includes(f.position)
+    ["top-left", "bot-left"].includes(f.position)
   );
 
   const rightFeatures = features.filter((f) =>
-    ["top-right", "mid-right", "bot-right"].includes(f.position)
+    ["top-right", "bot-right"].includes(f.position)
   );
 
   return (
@@ -164,8 +140,8 @@ export default function Features() {
           </div>
         </div>
 
-        {/* Desktop: curved composition around phone */}
-        <div className="relative mx-auto hidden h-[680px] w-full max-w-[1240px] lg:block">
+        {/* Desktop: composition around phone */}
+        <div className="relative mx-auto hidden h-[600px] w-full max-w-[1240px] lg:block">
           <div className="absolute left-1/2 top-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2">
             <div className="overflow-hidden rounded-[2.5rem]">
               <img
@@ -177,24 +153,20 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="absolute left-0 top-[16%] w-[360px]">
+          {/* Left Cards */}
+          <div className="absolute left-0 top-[25%] w-[360px]">
             <FeatureCard {...leftFeatures[0]} />
           </div>
-          <div className="absolute left-0 top-[41%] w-[360px]">
+          <div className="absolute left-0 top-[60%] w-[360px]">
             <FeatureCard {...leftFeatures[1]} />
           </div>
-          <div className="absolute left-0 top-[66%] w-[360px]">
-            <FeatureCard {...leftFeatures[2]} />
-          </div>
 
-          <div className="absolute right-0 top-[16%] w-[360px]">
+          {/* Right Cards */}
+          <div className="absolute right-0 top-[25%] w-[360px]">
             <FeatureCard {...rightFeatures[0]} />
           </div>
-          <div className="absolute right-0 top-[41%] w-[360px]">
+          <div className="absolute right-0 top-[60%] w-[360px]">
             <FeatureCard {...rightFeatures[1]} />
-          </div>
-          <div className="absolute right-0 top-[66%] w-[360px]">
-            <FeatureCard {...rightFeatures[2]} />
           </div>
         </div>
       </div>

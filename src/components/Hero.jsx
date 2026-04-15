@@ -20,18 +20,18 @@ export default function Hero() {
 
         {/* Text content */}
         <div className="w-full text-center md:w-1/2 md:text-left">
-          <h1 className="text-5xl font-black leading-tight text-brown md:text-6xl">
+          <h1 className="text-4xl font-extrabold leading-tight text-brown md:text-5xl">
             Patoo App
           </h1>
-          <h2 className="mt-3 text-2xl font-bold text-brown md:text-3xl">
-            Sous-titre de l'app
+          <h2 className="mt-6 text-3xl font-bold text-brown md:text-4xl leading-snug">
+            L'adoption, rendue<br />simple et significative
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-brown-light">
-            Paragraphe
+          <p className="mt-6 text-lg font-medium leading-relaxed text-brown max-w-[400px]">
+            Élimine la paperasse : matche un animal et laisse Patoo transmettre tes informations directement aux associations.
           </p>
           <a
             href="#telecharger"
-            className="mt-8 inline-block rounded-full bg-orange px-10 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-orange-dark hover:shadow-xl"
+            className="mt-8 inline-block rounded-full bg-orange px-10 py-4 text-lg font-bold text-white shadow-md transition hover:scale-105"
           >
             Télécharger l'app
           </a>

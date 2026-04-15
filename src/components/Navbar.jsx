@@ -31,13 +31,13 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#telecharger"
-            className="rounded-full bg-orange px-5 py-2.5 text-sm font-bold text-white transition hover:bg-orange-dark"
+            className="rounded-full bg-orange px-5 py-2.5 text-sm font-bold text-white transition hover:opacity-90"
           >
             Télécharger l'app
           </a>
           <a
             href="#contact"
-            className="rounded-full border-2 border-brown px-5 py-2.5 text-sm font-bold text-brown transition hover:bg-brown hover:text-white"
+            className="rounded-full border-2 border-orange px-5 py-2.5 text-sm font-bold text-brown transition hover:bg-orange hover:text-white"
           >
             Nous contacter
           </a>

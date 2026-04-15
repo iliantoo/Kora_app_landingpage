@@ -94,21 +94,21 @@ export default function HowTo() {
           Comment l'utiliser ?
         </h2>
 
-        <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-12 lg:gap-16">
+        <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-12 lg:gap-0">
           {/* Left: hand holding phone */}
-          <div className="flex w-full justify-center md:w-5/12">
-            <div className="relative w-[220px] md:w-[280px]">
+          <div className="flex w-full justify-center md:w-1/2 lg:w-[55%]">
+            <div className="relative w-[350px] sm:w-[450px] md:w-[120%] lg:w-[130%] xl:w-[140%] md:-ml-8 lg:-ml-16">
               <img
                 src="/images/howto-hand.png"
                 alt="Main tenant un téléphone"
-                className="h-auto w-full"
+                className="h-auto w-full max-w-none object-contain"
                 loading="lazy"
               />
             </div>
           </div>
 
           {/* Right: timeline */}
-          <div className="w-full max-w-md md:w-6/12">
+          <div className="w-full max-w-xl md:w-1/2 lg:w-[45%]">
             {steps.map((step, i) => (
               <StepCard
                 key={step.title}
