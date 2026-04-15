@@ -28,16 +28,16 @@ export default function Navbar() {
         </div>
 
         {/* Right buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <a
             href="#telecharger"
-            className="rounded-full bg-orange px-5 py-2.5 text-sm font-bold text-white transition hover:bg-orange-dark"
+            className="rounded-full bg-orange px-3 py-1.5 text-xs font-bold text-white transition hover:bg-orange-dark md:px-5 md:py-2.5 md:text-sm"
           >
             Télécharger l'app
           </a>
           <a
             href="#contact"
-            className="rounded-full border-2 border-brown px-5 py-2.5 text-sm font-bold text-brown transition hover:bg-brown hover:text-white"
+            className="rounded-full border-2 border-brown px-3 py-1.5 text-xs font-bold text-brown transition hover:bg-brown hover:text-white md:px-5 md:py-2.5 md:text-sm"
           >
             Nous contacter
           </a>
